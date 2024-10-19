@@ -1,112 +1,126 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_project/Util/UtilPages.dart';
 
 class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}): super(key: key);
+  const MyLogin({super.key});
   @override
-  _MyLoginState createState()=> _MyLoginState();
+  _MyLoginState createState() => _MyLoginState();
 }
 
-class _MyLoginState extends State<MyLogin>{
-  var fontSizes =33.5;
+class _MyLoginState extends State<MyLogin> {
+  FocusNode _focusNode = FocusNode();
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assests/login.png'),fit: BoxFit.cover)
-      ),
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.green],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.5, 1],
+            tileMode: TileMode.clamp,
+          )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Container(
-                padding:EdgeInsets.only(left:39,top: 130),
-                child: Text('Welcome To \n TrustedSeller',
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                    left: UtilitiesPages.LEFT, top: UtilitiesPages.TOP),
+                child: Text(
+                  'Welcome To \n TrustedSeller',
                   style: TextStyle(
-                  color: Colors.white,fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,
-                  fontSize: fontSizes
-                ),),
+                      color: Colors.green,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
+                      fontSize: UtilitiesPages.WELCOM_FONT_SIZE),
+                ),
               ),
-            ),
-             Container(
-               padding:EdgeInsets.only(
-                   top:MediaQuery.of(context).size.height*0.42,right:35,left: 35) ,
-              child: Column(
-                children: [
-                  TextField(
-                    keyboardType: TextInputType.number,  // Show numeric keyboard
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,  // Allow only digits (0-9)
-                    ],
-                    decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
-                      filled: true,
-                      hintText: 'Mobile Number',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  TextField(
-                      obscureText: true,
+              Container(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height *
+                        (UtilitiesPages.BOX_ALIGNMENT+0.15),
+                    right: UtilitiesPages.RIGHT,
+                    left: UtilitiesPages.LEFT),
+                child: Column(
+                  children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter
+                            .digitsOnly, // Allow only digits
+                        LengthLimitingTextInputFormatter(10),
+                      ],
                       decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          filled: true,
-                          hintText: 'Password',
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: UtilitiesPages.BOX_VERTICAL_SIZE,
+                            horizontal: UtilitiesPages.BOX_HORIZONTAL_SIZE),
+                        fillColor: Colors.grey.shade100,
+                        hintText: 'Enter your Mobile Number',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                UtilitiesPages.BOX_BORDER_RADIUS)),
                       ),
                     ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Text(
-                         'Sign In',
-                         style: TextStyle(color: Colors.grey,fontSize: 20,fontWeight:FontWeight.w400)
-                     ),
-                     CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.grey,
-                        child: IconButton(onPressed: (){}, icon:Icon(Icons.arrow_forward) ),
-                     ),
-
-                   ],
-
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      TextButton(onPressed: (){},
-                          child: Text(
-                            'Sign Up',
+                    SizedBox(
+                      height: UtilitiesPages.SIZE_BOX_HEIGHT,
+                    ),
+                    UtilitiesPages.buildUsernameTextField(
+                        "Enter Your Password"),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.green,
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.arrow_forward),color: Colors.white,),
+                        ),
+                        Text('Sign In',
                             style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: UtilitiesPages.OPTION_FONT_SIZE,
+                                fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "register");
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                fontSize: 20
-                            ),
-                          )),
-                      TextButton(onPressed: (){},
-                          child: Text(
-                            'Forget Password',
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 20
-                            ),
-                          )),
-                    ],
-                  )
-                ],
+                                fontSize: UtilitiesPages.OPTION_FONT_SIZE,
+                              ),
+                            )),
+                        TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Forget Password',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: UtilitiesPages.OPTION_FONT_SIZE),
+                            )),
+                      ],
+                    )
+                  ],
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
