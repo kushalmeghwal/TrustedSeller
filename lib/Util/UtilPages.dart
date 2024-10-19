@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_project/Pages/register.dart';
+
 
 class UtilitiesPages {
   static double LEFT = 35;

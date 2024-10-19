@@ -9,7 +9,6 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
-  FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Container(
