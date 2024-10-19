@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_project/Security/Details.dart';
 import 'package:flutter_project/Util/UtilPages.dart';
 import 'package:flutter_project/Security/PasswordField.dart';
+import 'package:flutter_project/Services/api_service.dart';
 
 class MyRegister extends StatefulWidget {
   MyRegister({super.key});
@@ -20,7 +21,9 @@ class _MyRegisterState extends State<MyRegister> {
   final TextEditingController _userEmailController = TextEditingController();
 
 
+
   void _sumbitRegister() {
+
     Details.userName = _userNameController.text;
     Details.mobile = _userMobileNumeberController.text;
     Details.password = PassphrasePasswordField.passwordController.text;
@@ -60,6 +63,18 @@ class _MyRegisterState extends State<MyRegister> {
       isFlag= true;
     }
    if(!isFlag){
+
+       print('Username: ${Details.userName}');
+     print('Mobile: ${Details.mobile}');
+     print('Email: ${Details.email}');
+     print('Password: ${Details.password}');
+          var UserData ={
+            "userName":Details.userName;
+            "mobileNo":Details.mobile;
+            "password":Details.password;
+            "email":Details.email;
+          }
+          ApiService.RegisterUser(userData);
      print('Username: ${Details.userName}');
      print('Mobile: ${Details.mobile}');
      print('Email: ${Details.email}');
