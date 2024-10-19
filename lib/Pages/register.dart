@@ -19,23 +19,53 @@ class _MyRegisterState extends State<MyRegister> {
       TextEditingController();
   final TextEditingController _userEmailController = TextEditingController();
 
+
   void _sumbitRegister() {
     Details.userName = _userNameController.text;
     Details.mobile = _userMobileNumeberController.text;
     Details.password = PassphrasePasswordField.passwordController.text;
     Details.confirmPassword = _userConfirmPasswordController.text;
     Details.email = _userEmailController.text;
+    bool isFlag = false;
+
+    if(Details.email==null || Details.confirmPassword==null || Details.password==null ||
+        Details.userName==null||Details.email!.isEmpty||Details.mobile!.isEmpty||
+        Details.userName!.isEmpty||Details.password!.isEmpty||Details.confirmPassword!.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("All Fields Are Required To Fill")),
+      );
+      print("null");
+      isFlag=true;
+    }
+      if(Details.mobile?.length!=10){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please Enter Valid Number ")),
+      );
+      print("mobile");
+      isFlag=true;
+    }
+      if(Details.email!.endsWith("@gmail.com")|| Details.email!.endsWith("@nitkkr.ac.in")){
+    }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Please Enter Valid Gmail Accont")),
+        );
+        print("Gamil");
+        isFlag=true;
+      }
     if (Details.password != Details.confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Password Do no Match")),
       );
-      return;
+      print("password");
+      isFlag= true;
     }
-
-    print('Username: ${Details.userName}');
-    print('Mobile: ${Details.mobile}');
-    print('Email: ${Details.email}');
-    print('Password: ${Details.password}');
+   if(!isFlag){
+     print('Username: ${Details.userName}');
+     print('Mobile: ${Details.mobile}');
+     print('Email: ${Details.email}');
+     print('Password: ${Details.password}');
+     return;
+   }
   }
 
 
