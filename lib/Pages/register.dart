@@ -20,7 +20,10 @@ class _MyRegisterState extends State<MyRegister> {
       TextEditingController();
   final TextEditingController _userEmailController = TextEditingController();
 
- void _sumbitRegister() {
+
+
+  void _sumbitRegister() {
+
     Details.userName = _userNameController.text;
     Details.mobile = _userMobileNumeberController.text;
     Details.password = PassphrasePasswordField.passwordController.text;
@@ -60,6 +63,7 @@ class _MyRegisterState extends State<MyRegister> {
       isFlag= true;
     }
    if(!isFlag){
+
        print('Username: ${Details.userName}');
      print('Mobile: ${Details.mobile}');
      print('Email: ${Details.email}');
@@ -71,6 +75,10 @@ class _MyRegisterState extends State<MyRegister> {
             "email":Details.email;
           }
           ApiService.RegisterUser(userData);
+     print('Username: ${Details.userName}');
+     print('Mobile: ${Details.mobile}');
+     print('Email: ${Details.email}');
+     print('Password: ${Details.password}');
      return;
    }
   }
