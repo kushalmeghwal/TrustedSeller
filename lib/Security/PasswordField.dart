@@ -51,9 +51,9 @@ class _PassphrasePasswordFieldState extends State<PassphrasePasswordField> {
               contentPadding: EdgeInsets.symmetric(
                   vertical: UtilitiesPages.BOX_VERTICAL_SIZE,
                   horizontal: UtilitiesPages.BOX_HORIZONTAL_SIZE),
-              fillColor: Colors.grey.shade100,
-              //filled: true,
-              hintText: 'Create A password',
+              fillColor: Colors.white,
+              filled: true,
+              hintText: 'Create password',
               hintStyle: TextStyle(
                 fontSize: UtilitiesPages.BOX_TEXT_FONT_SIZE,
               ),
