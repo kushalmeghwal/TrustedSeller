@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_project/Pages/login.dart';
 import 'package:flutter_project/Pages/register.dart';
 import 'package:flutter_project/Util/UtilPages.dart';
-
+import 'package:flutter_project/Util/backButton.dart';
 class MyWelcome extends StatefulWidget {
   const MyWelcome({super.key});
 
@@ -21,13 +22,15 @@ class _MyWelcomeState extends State<MyWelcome> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
+        //color: Color.fromARGB(223, 154, 206, 255),
           gradient: LinearGradient(
-            colors: [Colors.white, Colors.green],
+              colors: [Color.fromARGB(255, 116, 195, 234), Color.fromARGB(255, 255, 255, 255)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.5, 1],
+            stops: [0.4, 0.9],
             tileMode: TileMode.clamp,
-          )),
+          )
+          ),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: UtilitiesPages.LEFT,
@@ -36,13 +39,13 @@ class _MyWelcomeState extends State<MyWelcome> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+      
             _buildHeading(),
             SizedBox(height: UtilitiesPages.SIZE_BOX_HEIGHT),
-            _buildImage(),
+         
+           // _buildTitle(),
             SizedBox(height: UtilitiesPages.SIZE_BOX_HEIGHT),
-            _buildTitle(),
-            SizedBox(height: UtilitiesPages.SIZE_BOX_HEIGHT),
-            _buildSubtitle(),
+            //_buildSubtitle(),
             SizedBox(height: UtilitiesPages.SIZE_BOX_HEIGHT + 10),
             _buildLoginButton(),
             const SizedBox(height: 20),
@@ -53,61 +56,53 @@ class _MyWelcomeState extends State<MyWelcome> {
     );
   }
 
-  Widget _buildImage() {
-    return Image.asset(
-      'assests/welcome.png',
-      height: 200,
-      errorBuilder: (context, error, stackTrace) {
-        return Icon(Icons.error, size: 200, color: Colors.red);
-      },
-    );
-  }
-
-  Widget _buildHeading(){
-    return Container(
-
-      child: Text(
-        'Welcome To \n TrustedSeller',
-        style: TextStyle(
-            color: Colors.green,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.bold,
-            fontSize: UtilitiesPages.WELCOM_FONT_SIZE),
-      ),
-    );
-  }
+Widget _buildHeading() {
+  return Container(
+    child: Column(
+      children: [
+        Image.asset(
+          'assests/openPage3.png', // Ensure the image path is correct
+          height: 300, // Set desired height for the image
+          width: 300,  // Set desired width for the image
+        ),
+        const SizedBox(height: 10), // Adds spacing between image and text
+      ],
+    ),
+  );
+}
 
 
-  Widget _buildTitle() {
-    return const Text(
-      'ALL YOUR SHOPPING IN ONE APP',
-      style: TextStyle(
-        fontSize: 20,
-        color: Colors.green,
-      ),
-      textAlign: TextAlign.center,
-      softWrap: true,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
 
-  Widget _buildSubtitle() {
-    return const Text(
-      'Sell your products the smarter,\nfaster way for immediate cash and a\n cleaner conscience and trust.',
-      style: TextStyle(
-        fontSize: 16,
-        color: Colors.black,
-        fontStyle: FontStyle.italic,
-        fontWeight: FontWeight.bold,
-      ),
-      textAlign: TextAlign.center,
-    );
-  }
+  // Widget _buildTitle() {
+  //   return const Text(
+  //     'ALL YOUR SHOPPING IN ONE APP',
+  //     style: TextStyle(
+  //       fontSize: 20,
+  //       color: Colors.green,
+  //     ),
+  //     textAlign: TextAlign.center,
+  //     softWrap: true,
+  //     overflow: TextOverflow.ellipsis,
+  //   );
+  // }
+
+  // Widget _buildSubtitle() {
+  //   return const Text(
+  //     'Sell your products the smarter,\nfaster way for immediate cash and a\n cleaner conscience and trust.',
+  //     style: TextStyle(
+  //       fontSize: 16,
+  //       color: Colors.black,
+  //       fontStyle: FontStyle.normal,
+  //       fontWeight: FontWeight.bold,
+  //     ),
+  //     textAlign: TextAlign.center,
+  //   );
+  // }
 
   Widget _buildLoginButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: isLoginPressed ? Colors.green : Colors.black,
+        backgroundColor: Color.fromARGB(255, 109, 174, 231),
         minimumSize: const Size(double.infinity, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(UtilitiesPages.BOX_BORDER_RADIUS),
@@ -135,7 +130,7 @@ class _MyWelcomeState extends State<MyWelcome> {
   Widget _buildSignUpButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: isSignUpPressed ? Colors.green : Colors.black,
+               backgroundColor: Color.fromARGB(255, 109, 174, 231),
         minimumSize: const Size(double.infinity, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(UtilitiesPages.BOX_BORDER_RADIUS),
@@ -154,7 +149,7 @@ class _MyWelcomeState extends State<MyWelcome> {
         });
       },
       child: const Text(
-        'Sign Up',
+        'Register',
         style: TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
