@@ -38,4 +38,17 @@ class UtilitiesPages {
               borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS))),
     );
   }
+
+  static EdgeInsets buildPadding(BuildContext context){
+    double screenWidth= MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    EdgeInsets responsivePadding = EdgeInsets.symmetric(
+      horizontal: screenWidth*0.05,
+      vertical: screenHeight*0.02,
+    );
+     return responsivePadding;
+  }
+
+
+
 }

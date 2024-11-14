@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Pages/welcome.dart'; 
-import 'package:flutter_project/Pages/login.dart';
-import 'package:flutter_project/Pages/register.dart';
+import 'package:flutter_project/Pages/WelcomePage.dart';
+import 'package:flutter_project/Pages/LoginPage.dart';
+import 'package:flutter_project/Pages/RegisterPage.dart';
 import 'package:flutter_project/Util/UtilPages.dart';
 
 class MyHome extends StatefulWidget {
@@ -34,13 +34,13 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, scale, child) {
           return Transform.scale(
             scale: scale,
-            child: Image.asset('assests/openPage3.png'),
+            child: Image.asset('assets/openPage3.png'),
           );
         },
       );
     }
     // Widget _buildImage() {
-    //   return Image.asset('assests/openPage3.png');
+    //   return Image.asset('assets/openPage3.png');
     // }
     return Container(
             decoration: const BoxDecoration(
