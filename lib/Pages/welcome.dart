@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/Pages/login.dart';
 import 'package:flutter_project/Pages/register.dart';
 import 'package:flutter_project/Util/UtilPages.dart';
-import 'package:flutter_project/Util/backButton.dart';
+
 class MyWelcome extends StatefulWidget {
   const MyWelcome({super.key});
 
@@ -72,32 +72,6 @@ Widget _buildHeading() {
 }
 
 
-
-  // Widget _buildTitle() {
-  //   return const Text(
-  //     'ALL YOUR SHOPPING IN ONE APP',
-  //     style: TextStyle(
-  //       fontSize: 20,
-  //       color: Colors.green,
-  //     ),
-  //     textAlign: TextAlign.center,
-  //     softWrap: true,
-  //     overflow: TextOverflow.ellipsis,
-  //   );
-  // }
-
-  // Widget _buildSubtitle() {
-  //   return const Text(
-  //     'Sell your products the smarter,\nfaster way for immediate cash and a\n cleaner conscience and trust.',
-  //     style: TextStyle(
-  //       fontSize: 16,
-  //       color: Colors.black,
-  //       fontStyle: FontStyle.normal,
-  //       fontWeight: FontWeight.bold,
-  //     ),
-  //     textAlign: TextAlign.center,
-  //   );
-  // }
 
   Widget _buildLoginButton() {
     return ElevatedButton(

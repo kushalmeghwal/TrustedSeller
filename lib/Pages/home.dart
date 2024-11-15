@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Pages/welcome.dart'; 
-import 'package:flutter_project/Pages/login.dart';
-import 'package:flutter_project/Pages/register.dart';
 import 'package:flutter_project/Util/UtilPages.dart';
 
 class MyHome extends StatefulWidget {
